@@ -1,7 +1,7 @@
 {
 	"name": "liberty-dev-vscode-ext",
 	"displayName": "Open Liberty Tools",
-	"description": "Open Liberty Tools for Visual Studio Code",
+	"description": "Open Liberty Tools for Visual Studio Code - Dev mode support for Open Liberty",
 	"version": "0.1.4",
 	"publisher": "Open-Liberty",
 	"repository": {
@@ -14,15 +14,21 @@
 		"vscode": "^1.36.0"
 	},
 	"categories": [
-		"Programming Languages"
+		"Programming Languages",
+		"Other"
 	],
 	"keywords": [
 		"Java",
 		"Open Liberty",
 		"Maven",
-		"Gradle"
+		"Gradle",
+		"MicroProfile"
 	],
 	"icon": "images/ol_logo.png",
+	"galleryBanner": {
+		"color": "#24243B",
+		"theme": "dark"
+	},
 	"activationEvents": [
 		"workspaceContains:**/pom.xml",
 		"workspaceContains:**/build.gradle",
