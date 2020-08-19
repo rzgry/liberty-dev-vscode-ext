@@ -1,11 +1,27 @@
 import * as vscode from "vscode";
+import * as path from "path";
 import * as devCommands from "./utils/devCommands";
 
 import { LibertyProject, ProjectProvider } from "./utils/libertyProject";
+import { VSCODE_XML_EXT } from "./utils/constants";
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
 	console.log('"vscode-liberty-dev" extension is now active!');
 	const projectProvider = new ProjectProvider();
+
+	const extension = vscode.extensions.getExtension(VSCODE_XML_EXT);
+	if (extension) {
+	  if (!extension.isActive) {
+		await extension.activate();
+	  }
+	  const api = extension.exports;
+	  api.addXMLFileAssociations([
+		{
+		  systemId: path.resolve(__dirname, "../server.xsd"),
+		  pattern: "server.xml",
+		},
+	  ]);
+	}  
 
 	if (vscode.workspace.workspaceFolders !== undefined) {
 		registerFileWatcher(projectProvider);
